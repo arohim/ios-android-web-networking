@@ -46,6 +46,7 @@ kotlin {
                     implementation 'org.jetbrains.kotlin:kotlin-stdlib'
                     implementation "io.ktor:ktor-client-android:$ktor_version"
                     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+                    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$coroutines_version"
                     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
                 }
             }
@@ -74,4 +75,32 @@ kotlin {
             }
         }
     }
+}
+
+//task packForXCode(type: Sync) {
+//    final File frameworkDir = new File(buildDir, "xcode-frameworks")
+//    final String mode = project.findProperty("XCODE_CONFIGURATION")?.toUpperCase() ?: 'DEBUG'
+//    final def framework = kotlin.targets.ios.binaries.getFramework("SharedCode", mode)
+//
+//    inputs.property "mode", mode
+//    dependsOn framework.linkTask
+//
+//    from {
+//        framework.outputFile.parentFile
+//    }
+//    into frameworkDir
+//
+//    doLast {
+//        new File(frameworkDir, 'gradlew').with {
+//            text = "#!/bin/bash\nexport 'JAVA_HOME=${System.getProperty("java.home")}'\ncd '${rootProject.rootDir}'\n./gradlew \$@\n"
+//            setExecutable(true)
+//        }
+//    }
+//}
+//
+//tasks.build.dependsOn packForXCode
+
+// workaround for https://youtrack.jetbrains.com/issue/KT-27170
+configurations {
+    compileClasspath
 }

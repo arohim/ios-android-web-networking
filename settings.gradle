@@ -1,4 +1,4 @@
 include ':app'
 include ':SharedCode'
 
-rootProject.name = 'SharedCode'
+rootProject.name = 'SharedCodeSample'
