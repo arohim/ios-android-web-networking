@@ -4,6 +4,8 @@ import './App.css';
 import SharedCode from 'SharedCode'
 
 const sharedCode = SharedCode.com.jetbrains.handson.mpp.mobile;
+const weatherApi = SharedCode.com.jetbrains.handson.mpp.mobile.WeatherApi()
+const weatherRepo = SharedCode.com.jetbrains.handson.mpp.mobile.WeatherRepositoryImpl(weatherApi);
 
 function App() {
 
